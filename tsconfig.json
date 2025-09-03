@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",               // or ES2020
+    "lib": ["ES2017", "DOM"],         // ✅ adds Map, Set, WeakMap, Symbol, Iterable
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,             // ✅ prevents type errors from node_modules
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src", "utils"]
+}
