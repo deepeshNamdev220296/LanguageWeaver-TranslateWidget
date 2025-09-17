@@ -1,0 +1,472 @@
+[
+  {
+    "name": "Afrikaans",
+    "threeLetterCode": "afr",
+    "languageTag": "af"
+  },
+  {
+    "name": "Albanian",
+    "threeLetterCode": "alb",
+    "languageTag": "sq"
+  },
+  {
+    "name": "Amharic",
+    "threeLetterCode": "amh",
+    "languageTag": "am"
+  },
+  {
+    "name": "Arabic",
+    "threeLetterCode": "ara",
+    "languageTag": "ar"
+  },
+  {
+    "name": "Arabic (Arabizi)",
+    "threeLetterCode": "arz",
+    "languageTag": "ar-arabizi"
+  },
+  {
+    "name": "Armenian",
+    "threeLetterCode": "arm",
+    "languageTag": "hy"
+  },
+  {
+    "name": "Azerbaijani",
+    "threeLetterCode": "aze",
+    "languageTag": "az"
+  },
+  {
+    "name": "Basque",
+    "threeLetterCode": "baq",
+    "languageTag": "eu"
+  },
+  {
+    "name": "Belarusian",
+    "threeLetterCode": "bel",
+    "languageTag": "be"
+  },
+  {
+    "name": "Bengali",
+    "threeLetterCode": "ben",
+    "languageTag": "bn"
+  },
+  {
+    "name": "Bihari",
+    "threeLetterCode": "bih",
+    "languageTag": "bh"
+  },
+  {
+    "name": "Bosnian",
+    "threeLetterCode": "bos",
+    "languageTag": "bs"
+  },
+  {
+    "name": "Bulgarian",
+    "threeLetterCode": "bul",
+    "languageTag": "bg"
+  },
+  {
+    "name": "Burmese",
+    "threeLetterCode": "bur",
+    "languageTag": "my"
+  },
+  {
+    "name": "Catalan",
+    "threeLetterCode": "cat",
+    "languageTag": "ca"
+  },
+  {
+    "name": "Cebuano",
+    "threeLetterCode": "ceb",
+    "languageTag": "ceb"
+  },
+  {
+    "name": "Cherokee",
+    "threeLetterCode": "chr",
+    "languageTag": "chr"
+  },
+  {
+    "name": "Chinese (Simplified)",
+    "threeLetterCode": "chi",
+    "languageTag": "zh-Hans"
+  },
+  {
+    "name": "Chinese (Traditional)",
+    "threeLetterCode": "cht",
+    "languageTag": "zh-Hant"
+  },
+  {
+    "name": "Croatian",
+    "threeLetterCode": "hrv",
+    "languageTag": "hr"
+  },
+  {
+    "name": "Czech",
+    "threeLetterCode": "cze",
+    "languageTag": "cs"
+  },
+  {
+    "name": "Danish",
+    "threeLetterCode": "dan",
+    "languageTag": "da"
+  },
+  {
+    "name": "Dari",
+    "threeLetterCode": "fad",
+    "languageTag": "prs-AF"
+  },
+  {
+    "name": "Dutch",
+    "threeLetterCode": "dut",
+    "languageTag": "nl"
+  },
+  {
+    "name": "English",
+    "threeLetterCode": "eng",
+    "languageTag": "en"
+  },
+  {
+    "name": "Estonian",
+    "threeLetterCode": "est",
+    "languageTag": "et"
+  },
+  {
+    "name": "Finnish",
+    "threeLetterCode": "fin",
+    "languageTag": "fi"
+  },
+  {
+    "name": "French",
+    "threeLetterCode": "fra",
+    "languageTag": "fr"
+  },
+  {
+    "name": "French (Canada)",
+    "threeLetterCode": "frc",
+    "languageTag": "fr-CA"
+  },
+  {
+    "name": "Galician",
+    "threeLetterCode": "glg",
+    "languageTag": "gl"
+  },
+  {
+    "name": "Luganda",
+    "threeLetterCode": "lug",
+    "languageTag": "lg"
+  },
+  {
+    "name": "Georgian",
+    "threeLetterCode": "geo",
+    "languageTag": "ka"
+  },
+  {
+    "name": "German",
+    "threeLetterCode": "ger",
+    "languageTag": "de"
+  },
+  {
+    "name": "Greek",
+    "threeLetterCode": "gre",
+    "languageTag": "el"
+  },
+  {
+    "name": "Gujarati",
+    "threeLetterCode": "guj",
+    "languageTag": "gu"
+  },
+  {
+    "name": "Hausa",
+    "threeLetterCode": "hau",
+    "languageTag": "ha"
+  },
+  {
+    "name": "Hebrew",
+    "threeLetterCode": "heb",
+    "languageTag": "he"
+  },
+  {
+    "name": "Hindi",
+    "threeLetterCode": "hin",
+    "languageTag": "hi"
+  },
+  {
+    "name": "Hmong",
+    "threeLetterCode": "hmn",
+    "languageTag": "hmn"
+  },
+  {
+    "name": "Hungarian",
+    "threeLetterCode": "hun",
+    "languageTag": "hu"
+  },
+  {
+    "name": "Icelandic",
+    "threeLetterCode": "ice",
+    "languageTag": "is"
+  },
+  {
+    "name": "Indonesian",
+    "threeLetterCode": "ind",
+    "languageTag": "id"
+  },
+  {
+    "name": "Inuktitut",
+    "threeLetterCode": "iku",
+    "languageTag": "iu"
+  },
+  {
+    "name": "Irish",
+    "threeLetterCode": "gle",
+    "languageTag": "ga"
+  },
+  {
+    "name": "Italian",
+    "threeLetterCode": "ita",
+    "languageTag": "it"
+  },
+  {
+    "name": "Japanese",
+    "threeLetterCode": "jpn",
+    "languageTag": "ja"
+  },
+  {
+    "name": "Javanese",
+    "threeLetterCode": "jav",
+    "languageTag": "jv"
+  },
+  {
+    "name": "Kannada",
+    "threeLetterCode": "kan",
+    "languageTag": "kn"
+  },
+  {
+    "name": "Khmer",
+    "threeLetterCode": "khm",
+    "languageTag": "km"
+  },
+  {
+    "name": "Kinyarwanda",
+    "threeLetterCode": "kin",
+    "languageTag": "rw"
+  },
+  {
+    "name": "Korean",
+    "threeLetterCode": "kor",
+    "languageTag": "ko"
+  },
+  {
+    "name": "Kurdish",
+    "threeLetterCode": "kur",
+    "languageTag": "ku"
+  },
+  {
+    "name": "Latvian",
+    "threeLetterCode": "lav",
+    "languageTag": "lv"
+  },
+  {
+    "name": "Limbu",
+    "threeLetterCode": "lif",
+    "languageTag": "lif"
+  },
+  {
+    "name": "Limburgish",
+    "threeLetterCode": "liv",
+    "languageTag": "li"
+  },
+  {
+    "name": "Lithuanian",
+    "threeLetterCode": "lit",
+    "languageTag": "lt"
+  },
+  {
+    "name": "Macedonian",
+    "threeLetterCode": "mac",
+    "languageTag": "mk"
+  },
+  {
+    "name": "Malay",
+    "threeLetterCode": "may",
+    "languageTag": "ms"
+  },
+  {
+    "name": "Malayalam",
+    "threeLetterCode": "mal",
+    "languageTag": "ml"
+  },
+  {
+    "name": "Maltese",
+    "threeLetterCode": "mlt",
+    "languageTag": "mt"
+  },
+  {
+    "name": "Marathi",
+    "threeLetterCode": "mar",
+    "languageTag": "mr"
+  },
+  {
+    "name": "Nepali",
+    "threeLetterCode": "nep",
+    "languageTag": "ne"
+  },
+  {
+    "name": "Norwegian",
+    "threeLetterCode": "nor",
+    "languageTag": "no"
+  },
+  {
+    "name": "Oriya",
+    "threeLetterCode": "ori",
+    "languageTag": "or"
+  },
+  {
+    "name": "Ossetian",
+    "threeLetterCode": "oss",
+    "languageTag": "os"
+  },
+  {
+    "name": "Pashto",
+    "threeLetterCode": "pus",
+    "languageTag": "ps"
+  },
+  {
+    "name": "Persian",
+    "threeLetterCode": "per",
+    "languageTag": "fa"
+  },
+  {
+    "name": "Polish",
+    "threeLetterCode": "pol",
+    "languageTag": "pl"
+  },
+  {
+    "name": "Portuguese",
+    "threeLetterCode": "por",
+    "languageTag": "pt"
+  },
+  {
+    "name": "Portuguese (Brazil)",
+    "threeLetterCode": "ptb",
+    "languageTag": "pt-BR"
+  },
+  {
+    "name": "Portuguese (Portugal)",
+    "threeLetterCode": "ptp",
+    "languageTag": "pt-PT"
+  },
+  {
+    "name": "Romanian",
+    "threeLetterCode": "rum",
+    "languageTag": "ro"
+  },
+  {
+    "name": "Russian",
+    "threeLetterCode": "rus",
+    "languageTag": "ru"
+  },
+  {
+    "name": "Serbian",
+    "threeLetterCode": "srp",
+    "languageTag": "sr"
+  },
+  {
+    "name": "Slovak",
+    "threeLetterCode": "slo",
+    "languageTag": "sk"
+  },
+  {
+    "name": "Slovenian",
+    "threeLetterCode": "slv",
+    "languageTag": "sl"
+  },
+  {
+    "name": "Somali",
+    "threeLetterCode": "som",
+    "languageTag": "so"
+  },
+  {
+    "name": "Spanish",
+    "threeLetterCode": "spa",
+    "languageTag": "es"
+  },
+  {
+    "name": "Sundanese",
+    "threeLetterCode": "sun",
+    "languageTag": "su"
+  },
+  {
+    "name": "Swahili",
+    "threeLetterCode": "swa",
+    "languageTag": "sw"
+  },
+  {
+    "name": "Swedish",
+    "threeLetterCode": "swe",
+    "languageTag": "sv"
+  },
+  {
+    "name": "Syriac",
+    "threeLetterCode": "syr",
+    "languageTag": "syr"
+  },
+  {
+    "name": "Tagalog",
+    "threeLetterCode": "tgl",
+    "languageTag": "tl"
+  },
+  {
+    "name": "Tajik",
+    "threeLetterCode": "tgk",
+    "languageTag": "tg"
+  },
+  {
+    "name": "Tamil",
+    "threeLetterCode": "tam",
+    "languageTag": "ta"
+  },
+  {
+    "name": "Telugu",
+    "threeLetterCode": "tel",
+    "languageTag": "te"
+  },
+  {
+    "name": "Thai",
+    "threeLetterCode": "tha",
+    "languageTag": "th"
+  },
+  {
+    "name": "Turkish",
+    "threeLetterCode": "tur",
+    "languageTag": "tr"
+  },
+  {
+    "name": "Ukrainian",
+    "threeLetterCode": "ukr",
+    "languageTag": "uk"
+  },
+  {
+    "name": "Urdu",
+    "threeLetterCode": "urd",
+    "languageTag": "ur"
+  },
+  {
+    "name": "Uzbek",
+    "threeLetterCode": "uzb",
+    "languageTag": "uz"
+  },
+  {
+    "name": "Vietnamese",
+    "threeLetterCode": "vie",
+    "languageTag": "vi"
+  },
+  {
+    "name": "Welsh",
+    "threeLetterCode": "wel",
+    "languageTag": "cy"
+  },
+  {
+    "name": "Yiddish",
+    "threeLetterCode": "yid",
+    "languageTag": "yi"
+  }
+]

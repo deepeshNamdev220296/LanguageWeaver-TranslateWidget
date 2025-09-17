@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES2017",               // or ES2020
-    "lib": ["ES2017", "DOM"],         // ✅ adds Map, Set, WeakMap, Symbol, Iterable
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "target": "ES2017",  
     "strict": true,
-    "jsx": "react-jsx",
     "esModuleInterop": true,
-    "skipLibCheck": true,             // ✅ prevents type errors from node_modules
-    "forceConsistentCasingInFileNames": true
+      "lib": ["DOM", "ES2017"], 
+    "jsx": "react",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "types": [],
+    "baseUrl": "./src"   // ✅ optional, if you want cleaner imports
   },
-  "include": ["src", "utils"]
+  "include": [
+    "src",
+    "src/global.d.ts"    // ✅ must be included
+  ]
 }
