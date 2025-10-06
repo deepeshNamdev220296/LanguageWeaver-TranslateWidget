@@ -41,7 +41,7 @@ export interface Language {
 
 export interface iChunk {
   id: number;
-  nodes: Text[];
+  nodes: HTMLElement[];
   segments: string[];
 }
 
@@ -50,11 +50,6 @@ export interface iLW_TokenPackage {
   validityInSeconds: number;
   tokenType: string;
   expiresAt: number;
-}
-
-export interface DetectedLanguage {
-  code: string;
-  confidence?: number;
 }
 
 export interface iLW_PageTranslateIn {

@@ -10,7 +10,7 @@ export default {
   output: {
     file: "dist/translator-widget.js",
     format: "umd",
-    name: "TranslatorWidget",
+    name: "TranslatorWidget", // becomes window.TranslatorWidget
   },
   plugins: [
     resolve(),
@@ -19,7 +19,7 @@ export default {
     json(),
     url({
       include: ["**/*.png", "**/*.jpg", "**/*.svg"],
-      limit: 8192,
+      limit: 8192, // inline base64 if < 8kb
       emitFiles: true,
     }),
     replace({

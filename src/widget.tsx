@@ -17,19 +17,23 @@ import mainIcon from "./assets/32.png";
 import translateIcon from "./assets/translating.png";
 // @ts-ignore
 import languageIcon from "./assets/language.png";
-import { iChunk, iPageTranslateIn, DetectedLanguage } from "./interface";
+import { initDynamic } from "./dynamic";
+import { getAllTextNodes } from "./harvest";
+import { wrap, unwrap } from "./wrap";
+
 import {
-  initDynamic,
-  getAllTextNodes,
-  chunkNodes,
-  handleChunk,
-} from "./translatePage";
+  iChunk,
+  iPageTranslateIn,
+  DetectedLanguage,
+  iPageTranslateDynamic,
+} from "./interface";
+import { chunkNodes } from "./chunk";
 
 const baseUrl = "http://localhost:4000";
 let langPairsRef: any[] = [];
 let targetLanguages: { value: string; label: string }[] = [];
 let selectedTarget = "";
-let _nodes: Record<number, Text[]> = [];
+let _nodes: Record<number, HTMLElement[]> = [];
 let contentMap: any[] = [];
 let originalData: string[] = [];
 let originalBodyHTML: string | null = document.body.innerHTML;
@@ -142,7 +146,10 @@ function injectFloatingPanel() {
     panel.style.right = "0px";
 
     const siteId = await fetchSiteId();
+    console.log("Site Id", siteId);
+
     const token = siteId ? await fetchToken(siteId) : null;
+    console.log("Token", token);
 
     const storedData = JSON.parse(
       localStorage.getItem(`lw-token-${siteId}`) || "{}"
@@ -152,7 +159,7 @@ function injectFloatingPanel() {
     const panelContent = token
       ? `
       <div style="display: flex; flex-direction: column;">
-        <div class="panel-item" id="translate-full-page-btnn">
+        <div class="panel-item" id="translate-full-page-btn">
           <div style="display:flex; align-items:center; gap:6px; cursor:pointer;">
             <img src="${translateIcon}" style="height: 21px; width: 22px;" />
             <span>Translate Full Page</span>
@@ -225,7 +232,7 @@ function injectFloatingPanel() {
 
           // Trigger translation and handle chunks
           try {
-            const chunks = await translatePage({
+            translatePage({
               token,
               mode,
               inputFormat: "html",
@@ -234,37 +241,46 @@ function injectFloatingPanel() {
               targetLanguageId: selectedTarget,
               tabId: Date.now(),
             });
+            // const chunks = await translatePage({
+            //   token,
+            //   mode,
+            //   inputFormat: "html",
+            //   input: [],
+            //   sourceLanguageId: selectedSource,
+            //   targetLanguageId: selectedTarget,
+            //   tabId: Date.now(),
+            // });
 
-            console.log("Chunks", chunks);
-            showInPageNotification("Translation completed!");
+            // console.log("Chunks", chunks);
+            // showInPageNotification("Translation completed!");
 
-            for (const chunk of chunks) {
-              for (const node of chunk.nodes) {
-                const chunkParams: iPageTranslateIn = {
-                  token,
-                  mode,
-                  inputFormat: "PLAIN",
-                  input: [node.nodeValue ?? ""], // <-- single node text
-                  sourceLanguageId: selectedSource,
-                  targetLanguageId: selectedTarget,
-                  model: "generic",
-                  tabId: chunk.id,
-                  chunkId: chunk.id,
-                };
+            // for (const chunk of chunks) {
+            //   for (const node of chunk.nodes) {
+            //     const chunkParams: iPageTranslateIn = {
+            //       token,
+            //       mode,
+            //       inputFormat: "PLAIN",
+            //       input: [node.nodeValue ?? ""], // <-- single node text
+            //       sourceLanguageId: selectedSource,
+            //       targetLanguageId: selectedTarget,
+            //       model: "generic",
+            //       tabId: chunk.id,
+            //       chunkId: chunk.id,
+            //     };
 
-                const result = await sendChunkForTranslation(chunkParams);
+            //     const result = await sendChunkForTranslation(chunkParams);
 
-                if (result.translation && Array.isArray(result.translation)) {
-                  node.nodeValue = result.translation[0]; // ⚡ use the string
-                } else if (result.error) {
-                  console.error(
-                    `Translation error in chunk ${chunk.id}: ${result.error}`
-                  );
-                }
-              }
-            }
+            //     if (result.translation && Array.isArray(result.translation)) {
+            //       node.nodeValue = result.translation[0]; // ⚡ use the string
+            //     } else if (result.error) {
+            //       console.error(
+            //         `Translation error in chunk ${chunk.id}: ${result.error}`
+            //       );
+            //     }
+            //   }
+            // }
 
-            showInPageNotification("Translation completed!");
+            // showInPageNotification("Translation completed!");
           } catch (err) {
             console.error("Error during translation:", err);
             showInPageNotification("An error occurred during translation.");
@@ -797,10 +813,13 @@ export async function postTranslation(
 // -----------------------------
 // Updated translatePage logic
 // -----------------------------
-export async function translatePage(
-  params: iPageTranslateIn
-): Promise<iChunk[]> {
-  _nodes = {}; // reset nodes map
+
+export function translateDynamic(params: iPageTranslateDynamic) {
+  translateNodes(params, params.nodes);
+}
+
+export async function translatePage(params: iPageTranslateIn): Promise<void> {
+  _nodes = {};
   originalData = [];
   contentMap = [];
 
@@ -810,21 +829,84 @@ export async function translatePage(
 
   initDynamic(params);
 
-  const nodes = getAllTextNodes(document.body);
+  const nodes = getAllTextNodes(document.documentElement);
   console.log("Nodes", nodes);
 
-  // Chunk nodes for translation
-  const chunks: iChunk[] = chunkNodes(params.tabId, nodes);
+  if (nodes.length === 0) return;
 
-  // Save nodes per chunk
-  chunks.forEach((chunk) => (_nodes[chunk.id] = chunk.nodes));
+  // Show translation overlay
+  showTranslationOverlay(true);
+  try {
+    const chunks: iChunk[] = chunkNodes(params.tabId!, nodes);
 
-  // Translate each chunk **once**
-  for (const chunk of chunks) {
-    await handleChunk(chunk, params);
+    for (const chunk of chunks) {
+      _nodes[chunk.id] = chunk.nodes;
+
+      const clone: iPageTranslateIn = { ...params };
+      clone.input =
+        params.input && params.input.length > 0 ? params.input : chunk.segments; // ⚡ send array per node
+      clone.chunkId = chunk.id;
+
+      const result = await sendChunkForTranslation(clone);
+      console.log("Chunk Result:", result);
+
+      if (result.translation && Array.isArray(result.translation)) {
+        chunk.nodes.forEach((node, idx) => {
+          const translatedText = result.translation![idx]; // ⚡ the '!' tells TS this is not null
+          if (translatedText !== null && translatedText !== undefined) {
+            node.nodeValue = translatedText;
+          }
+        });
+      } else if (result.error) {
+        console.error(
+          `Translation error in chunk ${chunk.id}: ${result.error}`
+        );
+      }
+
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+    }
+
+    showInPageNotification("Translation completed!");
+  } catch (err) {
+    console.error("Error during full page translation:", err);
+    showInPageNotification("An error occurred during translation.");
+  } finally {
+    showTranslationOverlay(false);
   }
+}
 
-  return chunks;
+export function translateNodes(params: iPageTranslateIn, nodes: HTMLElement[]) {
+  let chunks: iChunk[] = chunkNodes(params.tabId!, nodes);
+
+  chunks.forEach((chunk) => {
+    handleChunk(chunk, params);
+  });
+}
+
+async function handleChunk(
+  chunk: iChunk,
+  data: iPageTranslateIn
+): Promise<void> {
+  _nodes[chunk.id] = chunk.nodes;
+
+  console.log("chunk", chunk);
+  console.log("_nodes", _nodes);
+
+  const clone: iPageTranslateIn = JSON.parse(JSON.stringify(data));
+  clone.input =
+    data.input && data.input.length > 0 ? data.input : [wrap(chunk.segments)];
+  clone.chunkId = chunk.id;
+
+  const result = await sendChunkForTranslation(clone);
+  console.log("Result", result);
+
+  // if (result.translation && Array.isArray(result.translation)) {
+  //   node.nodeValue = result.translation[0]; // ⚡ use the string
+  // } else if (result.error) {
+  //   console.error(`Translation error in chunk ${chunk.id}: ${result.error}`);
+  // }
+
+  // showInPageNotification("Translation completed!");
 }
 
 async function restoreOriginalPageIfNeededAsync(): Promise<void> {
