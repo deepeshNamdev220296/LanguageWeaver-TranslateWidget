@@ -29,7 +29,8 @@ import {
 } from "./interface";
 import { chunkNodes } from "./chunk";
 
-const baseUrl = "http://localhost:4000";
+// const baseUrl = "http://localhost:4000";
+const baseUrl = "https://lw-widget-server-c5565f7cbb73.herokuapp.com";
 let langPairsRef: any[] = [];
 let targetLanguages: { value: string; label: string }[] = [];
 let selectedTarget = "";
