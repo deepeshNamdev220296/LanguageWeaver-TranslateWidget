@@ -29,6 +29,7 @@ import {
 } from "./interface";
 import { chunkNodes } from "./chunk";
 
+// ---------- for running locally use local host as node js server ---------//
 // const baseUrl = "http://localhost:4000";
 const baseUrl = "https://lw-widget-server-c5565f7cbb73.herokuapp.com";
 let langPairsRef: any[] = [];
